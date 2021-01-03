@@ -135,9 +135,6 @@ namespace KiraiMod
 
                 if (selected != lastSelected)
                 {
-                    MelonLoader.MelonLogger.Log($"Page difference detected: {lastSelected} -> {selected}");
-                    MelonLoader.MelonLogger.Log($"prop_Boolean_0 is {QuickMenu.prop_QuickMenu_0.prop_Boolean_0}");
-
                     if (lastSelected > -1)
                     {
                         if (pages.Count > lastSelected)
