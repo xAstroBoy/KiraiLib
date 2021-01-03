@@ -65,19 +65,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Callbacks.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="ModSupport.cs" />
     <Compile Include="General.cs" />
     <Compile Include="KiraiLib.cs" />
+    <Compile Include="UI.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\Label.cs" />
+    <Compile Include="UI\Toggle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UI\Slider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>IF EXIST ../../KiraiMod/KiraiMod/ (
   COPY "$(TargetDir)/$(TargetName).dll" "../../KiraiMod/KiraiMod/Lib/$(TargetName).dll"
   COPY "$(TargetDir)/$(TargetName).xml" "../../KiraiMod/KiraiMod/Lib/$(TargetName).xml"
+)
+IF EXIST "C:\Program Files (x86)\Steam\steamapps\common\VRChat\Mods\KiraiLib.dll" (
+  COPY "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\VRChat\Mods\KiraiLib.dll"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

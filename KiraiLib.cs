@@ -5,22 +5,35 @@ using UnityEngine.UI;
 
 namespace KiraiMod
 {
-    public partial class KiraiLib
+    public static partial class KiraiLib
     {
         private static Text log;
         private static System.Collections.Generic.List<string> lines = new System.Collections.Generic.List<string>();
 
-        internal static void NOP() {}
+        /// <summary> This function does absolutely nothing. </summary>
+        public static void NoOp() { }
+
+        private static object OnUpdateToken;
+        private static bool Unloaded;
 
         static KiraiLib()
         {
-            MelonCoroutines.Start(Setup());
+            MelonCoroutines.Start(SetupUI());
+
+            Callbacks.OnUIUnload += () =>
+            {
+                Unloaded = true;
+                Logger.ClearLog();
+            };
+
+            Callbacks.OnUIReload += () => Unloaded = false;
         }
 
-        private static IEnumerator Setup()
+        private static IEnumerator SetupUI()
         {
             while (VRCUiManager.prop_VRCUiManager_0 is null) yield return null;
 
+            #region Create Logger
             GameObject gameObject = new GameObject("KiraiLibLog");
             log = gameObject.AddComponent<Text>();
 
@@ -36,10 +49,27 @@ namespace KiraiMod
             log.fontStyle = FontStyle.Bold;
             log.supportRichText = true;
             log.fontSize = 36;
+            #endregion
+
+            OnUpdateToken = MelonCoroutines.Start(OnUpdate());
+
+            UI.Initialize();
+        }
+
+        private static IEnumerator OnUpdate()
+        {
+            for (;;)
+            {
+                yield return null;
+
+                UI.HandlePages();
+            }
         }
 
         private static IEnumerator LogAndRemove(string text, float duration)
         {
+            if (Unloaded) yield break;
+
             lines.Add(text);
             log.text = string.Join("\n", lines);
             yield return new WaitForSecondsRealtime(duration);

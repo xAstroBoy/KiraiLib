@@ -78,7 +78,7 @@ namespace KiraiMod
                         .ConvertDelegate<
                             Il2CppSystem.Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>
                         >(
-                            new System.Action<string, System.Collections.Generic.List<KeyCode>, Text>(
+                            new Action<string, System.Collections.Generic.List<KeyCode>, Text>(
                                 (a, b, c) =>
                                 {
                                     OnAccept(a);
