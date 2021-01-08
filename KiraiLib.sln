@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiLib", "KiraiLib.csproj", "{64BECC60-FBAB-4340-AAF1-29FDDAC3667E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiLib", "KiraiLib\KiraiLib.csproj", "{64BECC60-FBAB-4340-AAF1-29FDDAC3667E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiLibLoader", "KiraiLibLoader\KiraiLibLoader.csproj", "{ECDF9F45-9E3C-49B9-8717-F781BF306680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{64BECC60-FBAB-4340-AAF1-29FDDAC3667E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64BECC60-FBAB-4340-AAF1-29FDDAC3667E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64BECC60-FBAB-4340-AAF1-29FDDAC3667E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

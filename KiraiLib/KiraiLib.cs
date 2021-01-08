@@ -13,7 +13,7 @@ namespace KiraiMod
         /// <summary> This function does absolutely nothing. </summary>
         public static void NoOp() { }
 
-        private static object OnUpdateToken;
+        public static object OnUpdateToken;
         private static bool Unloaded;
 
         static KiraiLib()
@@ -48,7 +48,7 @@ namespace KiraiMod
             log.alignment = TextAnchor.UpperLeft;
             log.fontStyle = FontStyle.Bold;
             log.supportRichText = true;
-            log.fontSize = 36;
+            log.fontSize = 24;
             #endregion
 
             OnUpdateToken = MelonCoroutines.Start(OnUpdate());

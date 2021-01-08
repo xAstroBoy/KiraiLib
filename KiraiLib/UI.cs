@@ -170,6 +170,7 @@ namespace KiraiMod
                 pages.Clear();
 
                 MelonLoader.MelonCoroutines.Stop(OnUpdateToken);
+                OnUpdateToken = null;
 
                 Callbacks.OnUIUnload();
             }
