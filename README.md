@@ -2,11 +2,13 @@
 Utility library for VRChat
 
 # Loading
-There are 4 ways to load the library correctly:
-  1. Using Assembly.Load with the bytes
-  2. Placing the DLL into the same folder as VRChat.exe
-  3. Adding the mod to MelonHandler.Mods
-  4. Placing the mod into the mods folder
+**Use the loader instead of the standalone for other mods that may need a more recent version**
+
+There are 6 ways to load the library correctly:
+  - (Loader or Standalone) Using Assembly.Load with the bytes
+  - (Loader or Standalone) Placing the DLL into the same folder as VRChat.exe
+  - (Loader) Adding the mod to MelonHandler.Mods
+  - (Loader) Placing the mod into the mods folder
   
 Here is an example of the first loading method using a manifest resource stream to get the bytes
 ```cs
@@ -14,11 +16,14 @@ public class KiraiMod : MelonMod
 {
     static KiraiMod() // .cctor
     {
-        System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KiraiMod.Lib.KiraiLib.dll");
-        System.IO.MemoryStream mem = new System.IO.MemoryStream((int)stream.Length);
+        // See https://stackoverflow.com/a/15277711/9281083
+        Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KiraiMod.Lib.KiraiLibLoader.dll");
+        MemoryStream mem = new MemoryStream((int)stream.Length);
         stream.CopyTo(mem);
-        
+
         Assembly.Load(mem.ToArray());
+
+        new Action(() => KiraiLibLoader.Load())(); // This is required although the loader is ready.
     }
 }
 ```
