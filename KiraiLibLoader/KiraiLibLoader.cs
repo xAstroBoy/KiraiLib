@@ -1,5 +1,6 @@
 ﻿using MelonLoader;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -21,6 +22,9 @@ namespace KiraiMod
             if (!loaded)
             {
                 loaded = true;
+
+                if (AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == "KiraiLib")) 
+                    return hasErrored;
 
                 Task<byte[]> req = new HttpClient().GetByteArrayAsync("https://cdn.jsdelivr.net/gh/xKiraiChan/KiraiLib@master/Dist/KiraiLib.dll");
 
