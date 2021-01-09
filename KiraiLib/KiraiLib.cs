@@ -1,5 +1,7 @@
 ﻿using MelonLoader;
 using System.Collections;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +16,17 @@ namespace KiraiMod
         public static void NoOp() { }
 
         public static object OnUpdateToken;
+        private static MethodInfo popup;
         private static bool Unloaded;
 
         static KiraiLib()
         {
             MelonCoroutines.Start(SetupUI());
+
+            popup = typeof(VRCUiPopupManager)
+                .GetMethods()
+                .Where(m => m.Name.Contains("Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_PDM_"))
+                .First(m => UnhollowerRuntimeLib.XrefScans.XrefScanner.XrefScan(m).Where(x => x.Type == UnhollowerRuntimeLib.XrefScans.XrefType.Global).Count() == 0);
 
             Callbacks.OnUIUnload += () =>
             {

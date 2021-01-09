@@ -55,19 +55,14 @@ namespace KiraiMod
             VRCUiManager.prop_VRCUiManager_0.Method_Public_Void_String_0(message);
         }
 
-        /// <summary>
-        /// Fetches user input
-        /// </summary>
+        /// <summary> Fetches user </summary>
         /// <param name="title">Title shown at the top of the dialog box</param>
         /// <param name="text">Text used for the confirm button</param>
         /// <param name="placeholder">Example text in the text area</param>
         /// <param name="OnAccept">Action returning the user input if they confirm</param>
         public static void HUDInput(string title, string text, string placeholder, Action<string> OnAccept)
         {
-            VRCUiPopupManager
-                .field_Private_Static_VRCUiPopupManager_0
-                .Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_PDM_1
-                (
+            popup.Invoke(VRCUiPopupManager.field_Private_Static_VRCUiPopupManager_0, new object[] {
                     title,
                     "",
                     InputField.InputType.Standard,
@@ -78,7 +73,7 @@ namespace KiraiMod
                         .ConvertDelegate<
                             Il2CppSystem.Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>
                         >(
-                            new Action<string, System.Collections.Generic.List<KeyCode>, Text>(
+                            new Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>(
                                 (a, b, c) =>
                                 {
                                     OnAccept(a);
@@ -89,12 +84,10 @@ namespace KiraiMod
                     placeholder,
                     true,
                     null
-                );
+                });
         }
 
-        /// <summary>
-        /// Gets a color based off of the current time, cycling through the rainbow
-        /// </summary>
+        /// <summary> Gets a color based off of the current time, cycling through the rainbow </summary>
         /// <param name="speed">Multipler on the cycling speed</param>
         /// <remarks>Note: Black is not a part of the rainbow</remarks>
         public static Color GetRainbow(float speed = 1)
