@@ -56,7 +56,7 @@ namespace KiraiMod
             log.alignment = TextAnchor.UpperLeft;
             log.fontStyle = FontStyle.Bold;
             log.supportRichText = true;
-            log.fontSize = 24;
+            log.fontSize = 30;
             #endregion
 
             OnUpdateToken = MelonCoroutines.Start(OnUpdate());
