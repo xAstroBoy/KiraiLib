@@ -46,7 +46,7 @@ namespace KiraiMod
             log = gameObject.AddComponent<Text>();
 
             gameObject.transform.SetParent(GameObject.Find("UserInterface/UnscaledUI/HudContent/Hud/NotificationDotParent").transform, false);
-            gameObject.transform.localPosition = new Vector3(0, 750);
+            gameObject.transform.localPosition = new Vector3(100, 700);
 
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(600, 30);
 
