@@ -96,5 +96,60 @@ namespace KiraiMod
                 (float)Math.Sin(speed * Time.time + (2 * 3.14 / 3)) * 0.5f + 0.5f,
                 (float)Math.Sin(speed * Time.time + (4 * 3.14 / 3)) * 0.5f + 0.5f);
         }
+
+        /// <summary>
+        /// 32 byte long cyclic redundancy check implementation
+        /// </summary>
+        // (from StackOverflow)
+        public static class CRC32
+        {
+            private static readonly uint[] ChecksumTable = new uint[0x100];
+            private static readonly uint Polynomial = 0xEDB88320;
+
+            static CRC32()
+            {
+                for (uint index = 0; index < 0x100; ++index)
+                {
+                    uint item = index;
+                    for (int bit = 0; bit < 8; ++bit)
+                        item = ((item & 1) != 0) ? (Polynomial ^ (item >> 1)) : (item >> 1);
+                    ChecksumTable[index] = item;
+                }
+            }
+
+            private static byte[] ComputeHash(System.IO.Stream stream)
+            {
+                uint result = 0xFFFFFFFF;
+
+                int current;
+                while ((current = stream.ReadByte()) != -1)
+                    result = ChecksumTable[(result & 0xFF) ^ (byte)current] ^ (result >> 8);
+
+                byte[] hash = BitConverter.GetBytes(~result);
+                Array.Reverse(hash);
+                return hash;
+            }
+
+            private static byte[] ComputeHash(byte[] data)
+            {
+                using (System.IO.MemoryStream stream = new System.IO.MemoryStream(data))
+                    return ComputeHash(stream);
+            }
+
+            /// <summary>
+            /// Convert data into a hash using a lossy algorithm
+            /// </summary>
+            /// <param name="data">Data to be hashed</param>
+            /// <returns>8 character long string</returns>
+            public static string Hash(byte[] data)
+            {
+                string hash = "";
+                foreach (byte b in ComputeHash(data))
+                {
+                    hash += b.ToString("X");
+                }
+                return hash;
+            }
+        }
     }
 }

@@ -33,6 +33,10 @@ namespace KiraiMod
                     byte[] bytes = req.Result;
 
                     Assembly.Load(bytes);
+
+                    new Action(() => { 
+                        MelonLogger.Log($"KiraiLib: ({KiraiLib.CRC32.Hash(bytes)})");
+                    })();
                 }
                 catch (AggregateException)
                 {
