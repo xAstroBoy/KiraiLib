@@ -15,9 +15,10 @@ namespace KiraiMod
         /// <summary> This function does absolutely nothing. </summary>
         public static void NoOp() { }
 
-        public static object OnUpdateToken;
-        private static MethodInfo popup;
+        private static object OnUpdateToken;
         private static bool Unloaded;
+
+        private static MethodInfo popup;
 
         static KiraiLib()
         {
