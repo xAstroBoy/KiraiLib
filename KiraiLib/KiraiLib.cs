@@ -60,7 +60,13 @@ namespace KiraiMod
             log.fontSize = 30;
             #endregion
 
-            OnUpdateToken = MelonCoroutines.Start(OnUpdate());
+            // i have no clue why the loop doesn't init successfully
+            // this will probably make it worse; too bad!
+            while (OnUpdateToken is null)
+            {
+                OnUpdateToken = MelonCoroutines.Start(OnUpdate());
+                yield return null;
+            }
 
             UI.Initialize();
         }
