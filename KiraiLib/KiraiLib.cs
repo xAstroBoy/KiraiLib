@@ -60,15 +60,21 @@ namespace KiraiMod
             log.fontSize = 30;
             #endregion
 
-            // i have no clue why the loop doesn't init successfully
-            // this will probably make it worse; too bad!
-            while (OnUpdateToken is null)
-            {
-                OnUpdateToken = MelonCoroutines.Start(OnUpdate());
-                yield return null;
-            }
-
             UI.Initialize();
+
+            var token = MelonCoroutines.Start(OnUpdate());
+            MelonLogger.Log(token is null);
+            MelonCoroutines.Stop(token);
+
+            // although this works its probably not the best solution
+            // on slower hardware like my own this isn't needed
+            // for someone with an ssd it is needed though
+            // that may just be a coincidence but it could mean
+            // that this delay will need to be increased depending on
+            // the speed they can load in
+            yield return new WaitForSeconds(5);
+
+            OnUpdateToken = MelonCoroutines.Start(OnUpdate());
         }
 
         private static IEnumerator OnUpdate()
