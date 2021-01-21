@@ -26,7 +26,7 @@ namespace KiraiMod
                 if (AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == "KiraiLib")) 
                     return hasErrored;
 
-                Task<byte[]> req = new HttpClient().GetByteArrayAsync("https://cdn.jsdelivr.net/gh/xKiraiChan/KiraiLib@master/Dist/KiraiLib.dll");
+                Task<byte[]> req = new HttpClient().GetByteArrayAsync("https://github.com/xKiraiChan/KiraiLib/raw/master/Dist/KiraiLib.dll");
 
                 try
                 {
