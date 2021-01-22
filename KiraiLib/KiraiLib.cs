@@ -63,7 +63,6 @@ namespace KiraiMod
             UI.Initialize();
 
             var token = MelonCoroutines.Start(OnUpdate());
-            MelonLogger.Log(token is null);
             MelonCoroutines.Stop(token);
 
             // although this works its probably not the best solution
