@@ -63,12 +63,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="VRCCore-Standalone, Version=3.7.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\VRCCore-Standalone.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Callbacks.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="General.cs" />
     <Compile Include="KiraiLib.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\Label.cs" />
