@@ -85,6 +85,20 @@ namespace KiraiMod
                     textText.GetComponent<RectTransform>().sizeDelta = new Vector2(textText.fontSize * label.Length, 100f);
                     textText.fontStyle = FontStyle.Bold;
 
+                    UnityEngine.UI.Button textButton = textGO.AddComponent<UnityEngine.UI.Button>();
+                    textButton.onClick.AddListener(new Action(() => {
+                        HUDKeypad($"Set {label}", "Set", "Enter value...", new Action<string>(raw => {
+                            if (float.TryParse(raw, out float val))
+                            {
+                                float real = Mathf.Clamp(val, min, max);
+                                if (val != real) Logger.Log($"<color=#3b78ff>{label}</color> cannot go out of bounds.");
+                                SetValue(real);
+                            }
+                        }));
+                    }));
+
+                    textGO.GetComponent<RectTransform>();
+
                     valueText = slider.transform.Find("Fill Area/Label").GetComponent<Text>();
                     valueText.color = Colors.SliderValueText;
                     valueText.fontStyle = FontStyle.Bold;

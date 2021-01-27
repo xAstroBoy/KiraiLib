@@ -63,29 +63,61 @@ namespace KiraiMod
         public static void HUDInput(string title, string text, string placeholder, Action<string> OnAccept)
         {
             popup.Invoke(VRCUiPopupManager.field_Private_Static_VRCUiPopupManager_0, new object[] {
+                title,
+                "",
+                InputField.InputType.Standard,
+                false,
+                text,
+                UnhollowerRuntimeLib
+                    .DelegateSupport
+                    .ConvertDelegate<
+                        Il2CppSystem.Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>
+                    >(
+                        new Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>(
+                            (a, b, c) =>
+                            {
+                                OnAccept(a);
+                            }
+                        )
+                    ),
+                null,
+                placeholder,
+                true,
+                null
+            });
+        }
+
+        public static void HUDKeypad(string title, string confirm, string placeholder, Action<string> OnAccept, Action OnCancel = null)
+        {
+            VRCUiPopupManager
+                .prop_VRCUiPopupManager_0
+                .Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_0(
                     title,
                     "",
                     InputField.InputType.Standard,
-                    false,
-                    text,
-                    UnhollowerRuntimeLib
-                        .DelegateSupport
-                        .ConvertDelegate<
-                            Il2CppSystem.Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>
-                        >(
-                            new Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>(
-                                (a, b, c) =>
-                                {
-                                    OnAccept(a);
-                                }
-                            )
-                        ),
-                    null,
+                    true,
+                    confirm,
+                    UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<
+                        Il2CppSystem.Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>
+                    >(
+                        new Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>(
+                            (a, b, c) =>
+                            {
+                                OnAccept?.Invoke(a);
+                            }
+                        )
+                    ),
+                    UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<
+                        Il2CppSystem.Action
+                    >(
+                        OnCancel
+                    ),
                     placeholder,
                     true,
                     null
-                });
+                    );
         }
+
 
         /// <summary> Gets a color based off of the current time, cycling through the rainbow </summary>
         /// <param name="speed">Multipler on the cycling speed</param>
