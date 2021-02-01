@@ -154,6 +154,8 @@ namespace KiraiMod
                         SetState();
                     }));
 
+                    button.gameObject.active = true;
+
                     self = button;
                 }
 
