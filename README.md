@@ -28,10 +28,6 @@ public class KiraiMod : MelonMod
 }
 ```
 
-Once the assembly is loaded you can use it freely. The process of loading it by any of these methods will make it instantiate itself.
-
-Note: I would recommend checking if KiraiLib is already loaded and if it is not fetching the latest version of KiraiLib and loading it to preserve compatibility with other mods that need a newer version but can't load it because an older version is already loaded. 
-
 # Logger Usage
 All logger functions have documentation, place the XML file in the same folder that you reference the library to see them in Visual Studio.
 
