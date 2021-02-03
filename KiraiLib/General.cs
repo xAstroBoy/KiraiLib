@@ -62,7 +62,7 @@ namespace KiraiMod
         /// <param name="OnAccept">Action returning the user input if they confirm</param>
         public static void HUDInput(string title, string text, string placeholder, Action<string> OnAccept)
         {
-            popup.Invoke(VRCUiPopupManager.field_Private_Static_VRCUiPopupManager_0, new object[] {
+            popup.Invoke(VRCUiPopupManager.prop_VRCUiPopupManager_0, new object[] {
                 title,
                 "",
                 InputField.InputType.Standard,

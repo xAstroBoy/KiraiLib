@@ -37,7 +37,7 @@ namespace KiraiMod
                 UserInteractMenu = UserInteractMenu ?? QuickMenu.prop_QuickMenu_0.transform.Find("UserInteractMenu").gameObject;
                 BaseToggle = BaseToggle ?? QuickMenu.prop_QuickMenu_0.transform.Find("UIElementsMenu/ToggleHUDButton").gameObject;
                 BaseButton = BaseButton ?? QuickMenu.prop_QuickMenu_0.transform.Find("NotificationInteractMenu/BlockButton").gameObject;
-                BaseSlider = BaseSlider ?? VRCUiManager.prop_VRCUiManager_0.menuContent.transform.Find("Screens/Settings/AudioDevicePanel/VolumeSlider").gameObject;
+                BaseSlider = BaseSlider ?? VRCUiManager.prop_VRCUiManager_0.field_Private_Transform_0.transform.Find("Screens/Settings/AudioDevicePanel/VolumeSlider").gameObject;
                 BaseLabel = BaseLabel ?? ShortcutMenu.transform.Find("WorldsButton/Text").gameObject;
             }
 

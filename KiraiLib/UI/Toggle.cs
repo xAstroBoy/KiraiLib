@@ -144,8 +144,8 @@ namespace KiraiMod
                     offTexts[1].resizeTextForBestFit = true;
 
                     UiTooltip buttonTooltip = button.transform.GetComponent<UiTooltip>();
-                    buttonTooltip.text = tooltip;
-                    buttonTooltip.alternateText = tooltip;
+                    buttonTooltip.field_Public_String_0 = tooltip;
+                    buttonTooltip.field_Public_String_1 = tooltip;
 
                     UnityEngine.UI.Button _button = button.transform.GetComponent<UnityEngine.UI.Button>();
                     _button.onClick = new UnityEngine.UI.Button.ButtonClickedEvent();

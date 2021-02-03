@@ -81,8 +81,8 @@ namespace KiraiMod
                     button.transform.GetComponentInChildren<Image>().color = Colors.ButtonBackground;
 
                     UiTooltip buttonTooltip = button.transform.GetComponentInChildren<UiTooltip>();
-                    buttonTooltip.text = tooltip;
-                    buttonTooltip.alternateText = tooltip;
+                    buttonTooltip.field_Public_String_0 = tooltip;
+                    buttonTooltip.field_Public_String_1 = tooltip;
 
                     UnityEngine.UI.Button buttonClick = button.transform.GetComponentInChildren<UnityEngine.UI.Button>();
                     buttonClick.onClick = new UnityEngine.UI.Button.ButtonClickedEvent();
