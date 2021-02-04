@@ -184,6 +184,13 @@ namespace KiraiMod
 
                 OnUpdateToken = MelonLoader.MelonCoroutines.Start(OnUpdate());
             }
+
+            /// <summary> Resets the page handler for when it doesn't start correctly without needing a full UI reload. </summary>
+            public static void ResetHandler()
+            {
+                MelonLoader.MelonCoroutines.Stop(OnUpdateToken);
+                OnUpdateToken = MelonLoader.MelonCoroutines.Start(OnUpdate());
+            }
         }
     }
 }
