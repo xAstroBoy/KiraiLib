@@ -39,7 +39,7 @@ namespace KiraiMod
                     if (managed)
                     {
                         if (elements.ContainsKey(id))
-                            MelonLogger.LogError($"{id} is already a registered UI element");
+                            MelonLogger.Error($"{id} is already a registered UI element");
                         else elements.Add(id, slider);
                     }
 
@@ -57,13 +57,15 @@ namespace KiraiMod
                     slider.transform.localPosition = new Vector3(ButtonSize * (x - 0.25f), ButtonSize * (y + 2.5f), 0.01f);
                     slider.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
+                    Action<float> OnValueChanged = new Action<float>(value => {
+                        _SetValue(value);
+                    });
+
                     uiSlider = slider.GetComponentInChildren<UnityEngine.UI.Slider>();
                     uiSlider.minValue = min;
                     uiSlider.maxValue = max;
                     uiSlider.onValueChanged = new UnityEngine.UI.Slider.SliderEvent();
-                    uiSlider.onValueChanged.AddListener(new Action<float>(value => {
-                        _SetValue(value);
-                    }));
+                    uiSlider.onValueChanged.AddListener(OnValueChanged);
 
                     slider.GetComponent<Image>().color = Colors.SliderInactive;
                     slider.transform.Find("Fill Area/Fill").GetComponent<Image>().color = Colors.SliderActive;
@@ -90,9 +92,11 @@ namespace KiraiMod
                         HUDKeypad($"Set {label}", "Set", "Enter value...", new Action<string>(raw => {
                             if (float.TryParse(raw, out float val))
                             {
-                                float real = Mathf.Clamp(val, min, max);
-                                if (val != real) Logger.Log($"<color=#3b78ff>{label}</color> cannot go out of bounds.");
-                                SetValue(real);
+                                // this is not the best solution by far but given the amount of times
+                                // on value changed is called its probably better than an if statement
+                                uiSlider.onValueChanged.RemoveAllListeners();
+                                SetValue(val);
+                                uiSlider.onValueChanged.AddListener(OnValueChanged);
                             }
                         }));
                     }));
@@ -108,6 +112,9 @@ namespace KiraiMod
                     self = slider.gameObject;
                 }
 
+                /// <summary> Set the value of the slider </summary>
+                /// <param name="value">The value to set to</param>
+                /// <remarks> This function has bounds checking </remarks>
                 public void SetValue(float value)
                 {
                     uiSlider.value = value;

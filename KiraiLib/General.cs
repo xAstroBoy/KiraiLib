@@ -21,12 +21,12 @@ namespace KiraiMod
             int depth = n_depth ?? 0;
             if (max != -1 && depth > max) return;
 
-            MelonLogger.Log(ConsoleColor.Green, "".PadLeft(depth * 4, ' ') + gameObject.name);
+            MelonLogger.Msg(ConsoleColor.Green, "".PadLeft(depth * 4, ' ') + gameObject.name);
 
             Component[] components = gameObject.GetComponents<Component>();
             for (int i = 0; i < components.Length; i++)
             {
-                MelonLogger.Log(
+                MelonLogger.Msg(
                     ConsoleColor.Cyan,
                     "".PadLeft((depth + 1) * 4, ' ') +
                     ((gameObject.name.Length + 2 < components[i].ToString().Length) ?
@@ -87,6 +87,12 @@ namespace KiraiMod
             });
         }
 
+        /// <summary> Shows a keypad for integer input </summary>
+        /// <param name="title"> The text at the top of the menu </param>
+        /// <param name="confirm"> The text on the button to confirm input </param>
+        /// <param name="placeholder"> Example text that shows up when nothing is entered </param>
+        /// <param name="OnAccept"> Callback with the number entered as a string </param>
+        /// <param name="OnCancel"> Callback when the user clicks cancel </param>
         public static void HUDKeypad(string title, string confirm, string placeholder, Action<string> OnAccept, Action OnCancel = null)
         {
             VRCUiPopupManager
