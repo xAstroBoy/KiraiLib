@@ -47,12 +47,12 @@ namespace KiraiMod
         /// Uses game methods to write text to the screen
         /// </summary>
         /// <param name="message">Message to be logged</param>
-        [Obsolete("Use Log instead", false)]
+        [Obsolete("Use Logger.Log instead", false)]
         public static void HUDMessage(string message)
         {
             if (VRCUiManager.prop_VRCUiManager_0 == null) return;
 
-            VRCUiManager.prop_VRCUiManager_0.Method_Public_Void_String_0(message);
+            VRCUiManager.prop_VRCUiManager_0.Method_Public_Void_String_1(message);
         }
 
         /// <summary> Fetches user </summary>

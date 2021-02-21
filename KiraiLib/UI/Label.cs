@@ -17,6 +17,8 @@ namespace KiraiMod
 
                 private Action OnClick;
 
+                // currently broken method
+                [Obsolete("Use explicit X and Y instead of index", false)]
                 public static Label Create(string id, string text, int index, Transform parent, Action OnClick, bool managed = true)
                 {
                     int x = 0;

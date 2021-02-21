@@ -4,6 +4,7 @@ using VRC.Core;
 
 namespace KiraiMod
 {
+    /// <summary> Helper methods </summary>
     public static class Extensions
     {
         /// <summary>
