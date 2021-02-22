@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(KiraiMod.KiraiLibLoader.ModSupport), "KiraiLibLoader", null, "Kirai Chan#8315", "github.com/xKiraiChan/KiraiLib")]
+[assembly: MelonInfo(typeof(KiraiMod.KiraiLibLoader.ModSupport), "KiraiLibLoader", "\x1b[1D ", "Kirai Chan#8315", "github.com/xKiraiChan/KiraiLib")]
 [assembly: MelonGame("VRChat", "VRChat")]
 
 namespace KiraiMod

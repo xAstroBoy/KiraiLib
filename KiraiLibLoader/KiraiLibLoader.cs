@@ -35,26 +35,26 @@ namespace KiraiMod
                     Assembly.Load(bytes);
 
                     new Action(() => { 
-                        MelonLogger.Log($"KiraiLib: ({KiraiLib.CRC32.Hash(bytes)})");
+                        MelonLogger.Msg($"KiraiLib: ({KiraiLib.CRC32.Hash(bytes)})");
                     })();
                 }
                 catch (AggregateException)
                 {
                     hasErrored = true;
 
-                    MelonLogger.Log($"Failed to load KiraiLib: {req.Exception.Message}");
+                    MelonLogger.Msg($"Failed to load KiraiLib: {req.Exception.Message}");
                 }
                 catch (Exception ex)
                 {
                     hasErrored = true;
 
-                    MelonLogger.Log($"Failed to load KiraiLib: {ex.Message}");
+                    MelonLogger.Msg($"Failed to load KiraiLib: {ex.Message}");
                 }
 
                 if (!hasErrored)
-                    MelonLogger.Log($"Successfully loaded KiraiLib");
+                    MelonLogger.Msg($"Successfully loaded KiraiLib");
 
-                MelonLogger.Log("------------------------------");
+                MelonLogger.Msg("------------------------------");
             }
 
             return hasErrored;

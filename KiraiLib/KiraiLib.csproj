@@ -78,6 +78,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\HalfButton.cs" />
     <Compile Include="UI\Label.cs" />
     <Compile Include="UI\Toggle.cs" />
   </ItemGroup>
