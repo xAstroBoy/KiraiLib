@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Callbacks.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="General.cs" />
     <Compile Include="KiraiLib.cs" />
