@@ -52,7 +52,7 @@ namespace KiraiMod
         {
             if (VRCUiManager.prop_VRCUiManager_0 == null) return;
 
-            VRCUiManager.prop_VRCUiManager_0.Method_Public_Void_String_1(message);
+            VRCUiManager.prop_VRCUiManager_0.Method_Public_Void_String_0(message);
         }
 
         /// <summary> Fetches user </summary>
