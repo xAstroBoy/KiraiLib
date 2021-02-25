@@ -16,13 +16,16 @@ namespace KiraiMod
         {
             if (user is null) return "Unknown";
 
-            if (user.hasLegendTrustLevel)
+            if (user.hasVeteranTrustLevel)
             {
-                if (user.tags.Contains("system_legend"))
-                    return "Legendary";
-                return "Veteran";
+                if (user.tags.Contains("system_trust_legend"))
+                {
+                    if (user.tags.Contains("system_legend"))
+                        return "Legendary";
+                    return "Veteran";
+                }
+                return "Trusted";
             }
-            else if (user.hasVeteranTrustLevel) return "Trusted";
             else if (user.hasTrustedTrustLevel) return "Known";
             else if (user.hasKnownTrustLevel) return "User";
             else if (user.hasBasicTrustLevel) return "New";
@@ -42,13 +45,16 @@ namespace KiraiMod
         {
             if (user is null) return Configuration.Unknown;
 
-            if (user.hasLegendTrustLevel)
+            if (user.hasVeteranTrustLevel)
             {
-                if (user.tags.Contains("system_legend")) 
-                    return Configuration.Legendary;
-                return Configuration.Veteran;
+                if (user.tags.Contains("system_trust_legend"))
+                {
+                    if (user.tags.Contains("system_legend"))
+                        return Configuration.Legendary;
+                    return Configuration.Veteran;
+                }
+                return Configuration.Trusted;
             }
-            else if (user.hasVeteranTrustLevel) return Configuration.Trusted;
             else if (user.hasTrustedTrustLevel) return Configuration.Known;
             else if (user.hasKnownTrustLevel) return Configuration.User;
             else if (user.hasBasicTrustLevel) return Configuration.NewUser;
