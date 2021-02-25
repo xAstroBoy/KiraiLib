@@ -16,22 +16,19 @@ namespace KiraiMod
         {
             if (user is null) return "Unknown";
 
-            if (user.hasVeteranTrustLevel)
+            if (user.hasLegendTrustLevel)
             {
-                if (user.tags.Contains("system_trust_legend"))
-                {
-                    if (user.tags.Contains("system_legend"))
-                        return "Legendary";
-                    return "Veteran";
-                }
-                return "Trusted";
+                if (user.tags.Contains("system_legend"))
+                    return "Legendary";
+                return "Veteran";
             }
+            else if (user.hasVeteranTrustLevel) return "Trusted";
             else if (user.hasTrustedTrustLevel) return "Known";
             else if (user.hasKnownTrustLevel) return "User";
             else if (user.hasBasicTrustLevel) return "New";
             else if (user.isUntrusted)
             {
-                if (user.tags.Contains("system_probable_troll")) 
+                if (user.tags.Contains("system_probable_troll"))
                     return "Nuisance";
                 return "Visitor";
             }
@@ -45,22 +42,19 @@ namespace KiraiMod
         {
             if (user is null) return Configuration.Unknown;
 
-            if (user.hasVeteranTrustLevel)
+            if (user.hasLegendTrustLevel)
             {
-                if (user.tags.Contains("system_trust_legend"))
-                {
-                    if (user.tags.Contains("system_legend"))
-                        return Configuration.Legendary;
-                    return Configuration.Veteran;
-                }
-                return Configuration.Trusted;
+                if (user.tags.Contains("system_legend"))
+                    return Configuration.Legendary;
+                return Configuration.Veteran;
             }
+            else if (user.hasVeteranTrustLevel) return Configuration.Trusted;
             else if (user.hasTrustedTrustLevel) return Configuration.Known;
             else if (user.hasKnownTrustLevel) return Configuration.User;
             else if (user.hasBasicTrustLevel) return Configuration.NewUser;
             else if (user.isUntrusted)
             {
-                if (user.tags.Contains("system_probable_troll")) 
+                if (user.tags.Contains("system_probable_troll"))
                     return Configuration.Nuisance;
                 return Configuration.Visitor;
             }
