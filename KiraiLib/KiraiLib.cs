@@ -25,7 +25,7 @@ namespace KiraiMod
             MelonCoroutines.Start(SetupUI());
 
             popup = typeof(VRCUiPopupManager).GetMethod(
-                nameof(VRCUiPopupManager.Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_1),
+                nameof(VRCUiPopupManager.Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_0),
                 BindingFlags.Public | BindingFlags.Instance);
 
             Callbacks.OnUIUnload += () =>
