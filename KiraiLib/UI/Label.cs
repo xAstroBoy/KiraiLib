@@ -87,6 +87,8 @@ namespace KiraiMod
 
                 /// <remarks> This should only be used if the button was made with the new keyword </remarks>
                 public override void Destroy() => UnityEngine.Object.Destroy(self);
+
+                public void SetText(string text) => this.text.text = text;
             }
         }
     }
