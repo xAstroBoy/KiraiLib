@@ -47,8 +47,8 @@ namespace KiraiMod
             {
                 string hash = new Regex("[^a-zA-Z0-9]").Replace(hashRequest.Result, "");
 
-                MelonLogger.Msg(oHash);
-                MelonLogger.Msg(hash);
+                MelonLogger.Msg($"Cached: {oHash}");
+                MelonLogger.Msg($"Latest: {hash}");
 
                 if (hash != oHash)
                 {
@@ -78,11 +78,6 @@ namespace KiraiMod
                 try
                 {
                     Assembly.Load(bytes);
-
-                    new Action(() =>
-                    {
-                        MelonLogger.Msg($"KiraiLib: ({oHash})");
-                    })();
                 }
                 catch (Exception ex)
                 {
