@@ -90,6 +90,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>COPY "$(TargetPath)" "../Dist/$(TargetName).dll"</PostBuildEvent>
+    <PostBuildEvent>COPY "$(TargetPath)" "../Dist/$(TargetName).dll"
+PowerShell -C "Get-FileHash -A SHA256 -Path '$(TargetPath)' | %25%25 Hash | Out-File '../Dist/$(TargetName).hash' -NoNewline"</PostBuildEvent>
   </PropertyGroup>
 </Project>
