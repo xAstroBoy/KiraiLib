@@ -36,6 +36,7 @@ namespace KiraiMod
 
             byte[] bytes = null;
             string oHash = null;
+
             if (System.IO.File.Exists("Dependencies/KiraiLib.dll"))
             {
                 bytes = System.IO.File.ReadAllBytes("Dependencies/KiraiLib.dll");
@@ -43,9 +44,10 @@ namespace KiraiMod
             }
 
             hashRequest.Wait();
+
             if (hashRequest.Exception is null)
             {
-                string hash = new Regex("[^a-zA-Z0-9]").Replace(hashRequest.Result, "");
+                string hash = new string(hashRequest.Result.ToCharArray().Where(char.IsLetterOrDigit).ToArray());
 
                 MelonLogger.Msg($"Cached: {oHash}");
                 MelonLogger.Msg($"Latest: {hash}");
