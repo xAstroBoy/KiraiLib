@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiLib", "KiraiLib\KiraiL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiLibLoader", "KiraiLibLoader\KiraiLibLoader.csproj", "{ECDF9F45-9E3C-49B9-8717-F781BF306680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiraiRPC", "KiraiRPC\KiraiRPC.csproj", "{ACD18608-63D0-42FD-82C8-18656DF119DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECDF9F45-9E3C-49B9-8717-F781BF306680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD18608-63D0-42FD-82C8-18656DF119DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD18608-63D0-42FD-82C8-18656DF119DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD18608-63D0-42FD-82C8-18656DF119DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD18608-63D0-42FD-82C8-18656DF119DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

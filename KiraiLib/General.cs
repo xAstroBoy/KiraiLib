@@ -1,18 +1,15 @@
 ﻿using MelonLoader;
 using System;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace KiraiMod
 {
-    /// <summary>
-    /// General utility library for VRChat
-    /// </summary>
+    /// <summary> General utility library for VRChat </summary>
     public partial class KiraiLib
     {
-        /// <summary>
-        /// Logs a GameObject and all of its components to the console
-        /// </summary>
+        /// <summary> Logs a GameObject and all of its components to the console </summary>
         /// <param name="gameObject">The GameObject to log</param>
         /// <param name="max">Maximum amount of times to traverse down children</param>
         /// <param name="n_depth">This parameter should be ignored</param>
@@ -138,9 +135,22 @@ namespace KiraiMod
                 (float)Math.Sin(speed * Time.time + (4 * 3.14 / 3)) * 0.5f + 0.5f);
         }
 
-        /// <summary>
-        /// 32 byte long cyclic redundancy check implementation
-        /// </summary>
+        /// <summary> Secure hashing algoritm 256 bit helper </summary>
+        /// <param name="bytes"> The bytes to hash </param>
+        /// <param name="caps"> use ABCDEF instead of abcdef </param>
+        /// <returns> 32 byte long hash </returns>
+        public static string SHA256(byte[] bytes, bool caps = false)
+        {
+            var crypt = new System.Security.Cryptography.SHA256Managed();
+            var hash = new StringBuilder();
+            byte[] crypto = crypt.ComputeHash(bytes);
+            foreach (byte theByte in crypto)
+                hash.Append(theByte.ToString($"x2"));
+            if (caps) return hash.ToString().ToUpper();
+            else return hash.ToString();
+        }
+
+        /// <summary> 32 byte long cyclic redundancy check implementation </summary>
         // (from StackOverflow)
         public static class CRC32
         {
