@@ -17,6 +17,8 @@ namespace KiraiMod
 
         static KiraiLib()
         {
+            SDK.Initialize();
+
             http = new HttpClient();
 
             MelonCoroutines.Start(SetupUI());

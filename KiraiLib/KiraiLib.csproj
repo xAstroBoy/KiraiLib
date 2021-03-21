@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\VRCCore-Standalone.dll</HintPath>
     </Reference>
+    <Reference Include="VRCSDKBase, Version=3.7.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\VRCSDKBase.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Callbacks.cs" />
@@ -77,6 +81,7 @@
     <Compile Include="KiraiLib.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Libraries.cs" />
+    <Compile Include="SDK.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\HalfButton.cs" />

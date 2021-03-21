@@ -49,7 +49,7 @@ namespace KiraiMod
                     } 
                     catch (Exception ex)
                     {
-                        MelonLogger.Warning($"Failed to get hash for module {name} ({ex.Message})");
+                        Logger.Warn($"Failed to get hash for module {name} ({ex.Message})");
                     }
 
 
@@ -67,10 +67,10 @@ namespace KiraiMod
                         {
                             if (bytes is null)
                             {
-                                MelonLogger.Warning($"Failed to update {name}, aborting ({ex.Message})");
+                                Logger.Warn($"Failed to update {name}, aborting ({ex.Message})");
                                 return false;
                             }
-                            else MelonLogger.Warning($"Failed to update {name}, using cached verion ({ex.Message})");
+                            else Logger.Warn($"Failed to update {name}, using cached verion ({ex.Message})");
                         }
                     }
 
@@ -84,7 +84,7 @@ namespace KiraiMod
                     }
                     catch (Exception ex)
                     {
-                        MelonLogger.Error($"Failed to load library {name} ({ex.Message})");
+                        Logger.Error($"Failed to load library {name} ({ex.Message})");
                         return false;
                     }
 

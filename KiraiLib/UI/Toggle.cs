@@ -82,7 +82,7 @@ namespace KiraiMod
                     if (managed)
                     {
                         if (elements.ContainsKey(id))
-                            MelonLogger.Error($"{id} is already a registered UI element");
+                            Logger.Error($"{id} is already a registered UI element");
                         else elements.Add(id, toggle);
                     }
 
