@@ -87,11 +87,11 @@ namespace KiraiMod
                 if (level >= console)
                 {
                     string vt =
-                        level == LogLevel.DEBUG ? Constants.CC_FgBlack  :
+                        level == LogLevel.DEBUG ? Constants.CC_FgBlue   :
                         level == LogLevel.INFO  ? Constants.CC_FgCyan   :
                         level == LogLevel.WARN  ? Constants.CC_FgYellow :
                         level == LogLevel.ERROR || 
-                        level == LogLevel.FATAL ? Constants.CC_FgRed    : "";
+                        level == LogLevel.FATAL ? Constants.CC_FgRed    : Constants.CC_Reset;
 
                     MelonLogger.Msg($"{Constants.CC_FgMagenta}[{vt}{Enum.GetName(typeof(LogLevel), level),5}{Constants.CC_FgMagenta}]{Constants.CC_Reset} {message}");
                 }
