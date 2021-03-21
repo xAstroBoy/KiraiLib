@@ -67,8 +67,7 @@ namespace KiraiLibs
             if (rpc.Length < 6) return;
             if (rpc[0] == 'k')
             {
-                if (player != Player.prop_Player_0)
-                    MelonLogger.Msg($"Recieved {rpc}");
+                Logger.Trace($"Recieved {rpc}");
 
                 // get the event id
                 // get the length of the mod name

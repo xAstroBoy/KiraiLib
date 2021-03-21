@@ -31,9 +31,7 @@ namespace KiraiLibs
 
         public static void SendRPC(string raw)
         {
-#if DEBUG
-            MelonLogger.Msg($"Sending {raw}");
-#endif
+            Logger.Trace($"Sending {raw}");
 
             if (handler == null)
             {
