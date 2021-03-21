@@ -1,4 +1,4 @@
-﻿namespace KiraiLib
+﻿namespace KiraiLibs
 {
     partial class KiraiRPC
     {

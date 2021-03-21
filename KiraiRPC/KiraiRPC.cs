@@ -8,7 +8,7 @@ using static KiraiMod.KiraiLib;
 using static VRC.SDKBase.VRC_EventHandler;
 using Logger = KiraiMod.KiraiLib.Logger;
 
-namespace KiraiLib
+namespace KiraiLibs
 {
     public static partial class KiraiRPC
     {
