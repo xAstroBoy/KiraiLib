@@ -23,9 +23,12 @@ namespace KiraiMod
 
             internal static void Initialize()
             {
-                instance = new KiraiLibSDK();
-
-                MelonHandler.Mods.Add(instance);
+                try
+                {
+                    harmony.Patch(typeof(MelonHandler)
+                        .GetMethod("OnSceneWasLoaded", BindingFlags.Static | BindingFlags.NonPublic),
+                        new HarmonyMethod(typeof(SDK).GetMethod(nameof(SDK.OnSceneLoadHook), BindingFlags.Static | BindingFlags.NonPublic)));
+                } catch { Logger.Error("Failed to hook OnSceneLoad"); }
 
                 try
                 {
@@ -35,16 +38,11 @@ namespace KiraiMod
                         .FirstOrDefault(m => m.Name.Length == 66);
 
                     harmony.Patch(OnRPCInfo, new HarmonyMethod(typeof(SDK).GetMethod(nameof(SDK.OnRPCHook), BindingFlags.Static | BindingFlags.NonPublic)));
-                } catch {}
+                } catch { Logger.Error("Failed to hook OnRPC"); }
             }
 
             private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1); 
-
-            internal static KiraiLibSDK instance;
-            internal class KiraiLibSDK : MelonMod
-            {
-                public override void OnSceneWasLoaded(int buildIndex, string sceneName) => Events.OnSceneLoad(buildIndex, sceneName);
-            }
+            private static void OnSceneLoadHook(ref int __0, ref string __1) => Events.OnSceneLoad(__0, __1); 
         }
     }
 }
