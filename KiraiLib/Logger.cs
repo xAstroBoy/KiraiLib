@@ -77,15 +77,24 @@ namespace KiraiMod
                     string hex =
                         level == LogLevel.TRACE ? "888" :
                         level == LogLevel.DEBUG ? "08f" :
-                        level == LogLevel.INFO ? "ccf" :
-                        level == LogLevel.WARN ? "fa0" :
+                        level == LogLevel.INFO  ? "ccf" :
+                        level == LogLevel.WARN  ? "fa0" :
                         level == LogLevel.ERROR ? "f00" : "800";
 
                     Display($"<color=#{hex}>{message}</color>", 1.5f);
                 }
 
                 if (level >= console)
-                    MelonLogger.Msg($"[{System.Enum.GetName(typeof(LogLevel), level),5}] {message}");
+                {
+                    string vt =
+                        level == LogLevel.DEBUG ? Constants.CC_FgBlack  :
+                        level == LogLevel.INFO  ? Constants.CC_FgCyan   :
+                        level == LogLevel.WARN  ? Constants.CC_FgYellow :
+                        level == LogLevel.ERROR || 
+                        level == LogLevel.FATAL ? Constants.CC_FgRed    : "";
+
+                    MelonLogger.Msg($"{Constants.CC_FgMagenta}[{vt}{Enum.GetName(typeof(LogLevel), level),5}{Constants.CC_FgMagenta}]{Constants.CC_Reset} {message}");
+                }
             }
 
             public static void Trace(string message) => LogEx(LogLevel.TRACE, message); 
