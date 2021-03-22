@@ -25,20 +25,20 @@ namespace KiraiMod
 
             internal static void Initialize()
             {
-                try
-                {
-                    SceneManager.sceneLoaded = Il2CppSystem.Delegate.Combine(
-                            SceneManager.sceneLoaded,
-                            (UnityAction<Scene, LoadSceneMode>)new Action<Scene, LoadSceneMode>(OnSceneLoadHook)
-                        ) as UnityAction<Scene, LoadSceneMode>;
+                //try
+                //{
+                //    SceneManager.sceneLoaded = Il2CppSystem.Delegate.Combine(
+                //            SceneManager.sceneLoaded,
+                //            (UnityAction<Scene, LoadSceneMode>)new Action<Scene, LoadSceneMode>(OnSceneLoadHook)
+                //        ) as UnityAction<Scene, LoadSceneMode>;
 
-                    Logger.Trace("Successfully hooked OnSceneLoad");
-                } 
-                catch (Exception ex)
-                {
-                    Logger.Error("Failed to hook OnSceneLoad");
-                    Logger.Debug($"Due to: {ex.Message}");
-                }
+                //    Logger.Trace("Successfully hooked OnSceneLoad");
+                //} 
+                //catch (Exception ex)
+                //{
+                //    Logger.Error("Failed to hook OnSceneLoad");
+                //    Logger.Debug($"Due to: {ex.Message}");
+                //}
 
                 try
                 {
