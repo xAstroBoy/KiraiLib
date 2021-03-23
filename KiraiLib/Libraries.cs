@@ -19,8 +19,8 @@ namespace KiraiMod
             /// <summary> Load and cache a dynamic library from a registry </summary>
             /// <param name="name"> Name of the library </param>
             /// <param name="registry"> Optional URL base to search for modules from </param>
-            /// <returns> True if success or already loaded 1</returns>
-            public static async Task<bool> LoadLibrary(string name, [Optional] string registry)
+            /// <returns> 0: Failure | 1: Success | 2: Already loaded </returns>
+            public static async Task<short> LoadLibrary(string name, [Optional] string registry)
             {
                 if (!loaded.Contains(name))
                 {
@@ -72,7 +72,7 @@ namespace KiraiMod
                             if (bytes is null)
                             {
                                 Logger.Warn($"Failed to update {name}, aborting ({ex.Message})");
-                                return false;
+                                return 0;
                             }
                             else Logger.Warn($"Failed to update {name}, using cached verion ({ex.Message})");
                         }
@@ -89,7 +89,7 @@ namespace KiraiMod
                     catch (Exception ex)
                     {
                         Logger.Error($"Failed to load library {name} ({ex.Message})");
-                        return false;
+                        return 0;
                     }
 
                     string[] tmp = new string[loaded.Length + 1];
@@ -97,9 +97,9 @@ namespace KiraiMod
                     tmp[loaded.Length] = name;
                     loaded = tmp;
 
-                    return true;
+                    return 1;
                 }
-                else return true;
+                else return 2;
             }
         }
     }

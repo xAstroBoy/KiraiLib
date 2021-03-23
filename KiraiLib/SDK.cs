@@ -37,9 +37,6 @@ namespace KiraiMod
             }
 
             private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1);
-            /// <summary> Shared action from a single mod to run the event only once </summary>
-            /// <remarks> Temporary hack until a better solution is figured out </remarks>
-            public static Action<int, string> OnSceneLoadSingle = new Action<int, string>((_, __) => { });
         }
     }
 }
