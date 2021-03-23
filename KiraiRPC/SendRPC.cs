@@ -26,7 +26,7 @@ namespace KiraiLibs
                 body += param;
             }
 
-            SendRPC($"k{sid.PadLeft(3, '0')}{name.Length:X}{name}{payload.Length:X}{payload.Length:X}{header}{body}");
+            SendRPC($"k{sid.PadLeft(3, '0')}{name.Length:X}{name}{payload.Length:X}{header}{body}");
         }
 
         public static void SendRPC(string raw)
