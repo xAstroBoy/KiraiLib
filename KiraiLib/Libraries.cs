@@ -44,14 +44,14 @@ namespace KiraiMod
 
                     try
                     {
-                        Logger.Debug($"Loading {name}:");
-                        Logger.Debug($"Cached: {oHash}");
-                        Logger.Debug($"Latest: {hash}");
-
                         hash = new string((await hashReq)
                             .ToCharArray()
                             .Where(char.IsLetterOrDigit)
                             .ToArray());
+
+                        Logger.Debug($"Loading {name}:");
+                        Logger.Debug($"Cached: {oHash}");
+                        Logger.Debug($"Latest: {hash}");
                     } 
                     catch (Exception ex)
                     {
