@@ -30,7 +30,7 @@ namespace KiraiMod
             Callbacks.OnUIUnload += () =>
             {
                 Unloaded = true;
-                Logger.ClearLog();
+                Logger.ClearDisplay();
             };
 
             Callbacks.OnUIReload += () => Unloaded = false;

@@ -20,26 +20,11 @@ namespace KiraiMod
             public static class Events
             {
                 public static Action<int, string> OnSceneLoad = new Action<int, string>((_, __) => { });
-                public static Action<Player, VrcEvent> OnRPC = new Action<Player, VrcEvent>((_, __) => { }); 
+                public static Action<Player, VrcEvent> OnRPC = new Action<Player, VrcEvent>((_, __) => { });
             }
 
             internal static void Initialize()
             {
-                //try
-                //{
-                //    SceneManager.sceneLoaded = Il2CppSystem.Delegate.Combine(
-                //            SceneManager.sceneLoaded,
-                //            (UnityAction<Scene, LoadSceneMode>)new Action<Scene, LoadSceneMode>(OnSceneLoadHook)
-                //        ) as UnityAction<Scene, LoadSceneMode>;
-
-                //    Logger.Trace("Successfully hooked OnSceneLoad");
-                //} 
-                //catch (Exception ex)
-                //{
-                //    Logger.Error("Failed to hook OnSceneLoad");
-                //    Logger.Debug($"Due to: {ex.Message}");
-                //}
-
                 try
                 {
                     MethodInfo OnRPCInfo = typeof(VRC_EventDispatcherRFC)
@@ -51,8 +36,10 @@ namespace KiraiMod
                 } catch { Logger.Error("Failed to hook OnRPC"); }
             }
 
-            private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1); 
-            private static void OnSceneLoadHook(Scene scene, LoadSceneMode mode) => Events.OnSceneLoad(scene.buildIndex, scene.name); 
+            private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1);
+            /// <summary> Shared action from a single mod to run the event only once </summary>
+            /// <remarks> Temporary hack until a better solution is figured out </remarks>
+            public static Action<int, string> OnSceneLoadSingle = new Action<int, string>((_, __) => { });
         }
     }
 }
