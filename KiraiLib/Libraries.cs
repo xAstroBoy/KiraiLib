@@ -1,5 +1,4 @@
-﻿using MelonLoader;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +14,7 @@ namespace KiraiMod
         public static class Libraries
         {
             private static string[] loaded = { "KiraiLib" };
+            private static System.Collections.Generic.List<string> loading = new System.Collections.Generic.List<string>();
 
             /// <summary> Load and cache a dynamic library from a registry </summary>
             /// <param name="name"> Name of the library </param>
@@ -22,8 +22,10 @@ namespace KiraiMod
             /// <returns> 0: Failure | 1: Success | 2: Already loaded </returns>
             public static async Task<short> LoadLibrary(string name, [Optional] string registry)
             {
-                if (!loaded.Contains(name))
+                if (!loaded.Contains(name) && !loading.Contains(name))
                 {
+                    loading.Add(name);
+
                     if (string.IsNullOrWhiteSpace(registry))
                         registry = "https://raw.githubusercontent.com/xKiraiChan/KiraiLib/master/Dist/";
 
@@ -72,6 +74,7 @@ namespace KiraiMod
                             if (bytes is null)
                             {
                                 Logger.Warn($"Failed to update {name}, aborting ({ex.Message})");
+                                loading.Remove(name);
                                 return 0;
                             }
                             else Logger.Warn($"Failed to update {name}, using cached verion ({ex.Message})");
@@ -89,6 +92,7 @@ namespace KiraiMod
                     catch (Exception ex)
                     {
                         Logger.Error($"Failed to load library {name} ({ex.Message})");
+                        loading.Remove(name);
                         return 0;
                     }
 
@@ -96,6 +100,7 @@ namespace KiraiMod
                     loaded.CopyTo(tmp, 0);
                     tmp[loaded.Length] = name;
                     loaded = tmp;
+                    loading.Remove(name);
 
                     return 1;
                 }

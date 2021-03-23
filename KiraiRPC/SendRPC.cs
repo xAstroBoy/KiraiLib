@@ -7,12 +7,8 @@ namespace KiraiLibs
 {
     partial class KiraiRPC
     {
-        public static void SendRPC(int id) => SendRPC("", id, new string[0] { });
-        public static void SendRPC(int id, string payload) => SendRPC("", id, new string[1] { payload });
-        public static void SendRPC(int id, string[] payload) => SendRPC("", id, payload);
-        public static void SendRPC(string name, int id) => SendRPC(name, id, new string[0] { });
-        public static void SendRPC(string name, int id, string payload) => SendRPC(name, id, new string[1] { payload });
-        public static void SendRPC(string name, int id, string[] payload)
+        public static void SendRPC(int id, params string[] payload) => SendRPC("", id, payload);
+        public static void SendRPC(string name, int id, params string[] payload)
         {
             string sid = id.ToString("X");
             if (sid.Length > 3) return;
