@@ -44,10 +44,7 @@ namespace KiraiMod
 
                     try
                     {
-                        hash = new string((await hashReq)
-                            .ToCharArray()
-                            .Where(char.IsLetterOrDigit)
-                            .ToArray());
+                         hash = new string(hashReq.Result.ToCharArray().Where(char.IsLetterOrDigit).ToArray());
 
                         Logger.Debug($"Loading {name}:");
                         Logger.Debug($"Cached: {oHash}");
@@ -67,7 +64,9 @@ namespace KiraiMod
                         {
                             bytes = await dllReq;
 
-                            File.WriteAllBytes($"Dependencies/{name}.dll", bytes);
+                            File.WriteAllBytes(_path, bytes);
+
+                            Logger.Info($"Updated {name}");
                         } 
                         catch (Exception ex)
                         {
