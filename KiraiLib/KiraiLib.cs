@@ -27,13 +27,13 @@ namespace KiraiMod
                 nameof(VRCUiPopupManager.Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_0),
                 BindingFlags.Public | BindingFlags.Instance);
 
-            Callbacks.OnUIUnload += () =>
+            Events.OnUIUnload += () =>
             {
                 Unloaded = true;
                 Logger.ClearDisplay();
             };
 
-            Callbacks.OnUIReload += () => Unloaded = false;
+            Events.OnUIReload += () => Unloaded = false;
         }
 
         private static IEnumerator SetupUI()

@@ -14,8 +14,8 @@ namespace KiraiLibs
     {
         static KiraiRPC()
         {
-            SDK.Events.OnSceneLoad += OnLoad;
-            SDK.Events.OnRPC += OnRPC;
+            Events.OnSceneLoad += OnLoad;
+            Events.OnRPC += OnRPC;
         }
 
         private static VRC_EventHandler handler;

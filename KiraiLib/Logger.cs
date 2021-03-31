@@ -15,7 +15,7 @@ namespace KiraiMod
 
             internal static void Initialize()
             {
-                SDK.Events.OnSceneLoad += (_, __) => ClearDisplay();
+                Events.OnSceneLoad += (_, __) => ClearDisplay();
 
                 GameObject gameObject = new GameObject("KiraiLibLog");
                 log = gameObject.AddComponent<Text>();

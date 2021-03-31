@@ -19,15 +19,6 @@ namespace KiraiMod
         {
             public static HarmonyInstance harmony = HarmonyInstance.Create("KiraiLib");
 
-            public static class Events
-            {
-                public static Action<int, string> OnSceneLoad = new Action<int, string>((_, __) => { });
-                public static Action<Player, VrcEvent> OnRPC = new Action<Player, VrcEvent>((_, __) => { });
-                public static Action<Player> OnPlayerJoined = new Action<Player>(_ => { });
-                public static Action<Player> OnPlayerLeft = new Action<Player>(_ => { });
-                public static Action<Player> OnOwnershipTransferred = new Action<Player>(_ => { });
-            }
-
             private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1);
 
             internal static void Initialize()

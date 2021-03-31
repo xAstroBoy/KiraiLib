@@ -174,7 +174,7 @@ namespace KiraiMod
                 MelonLoader.MelonCoroutines.Stop(OnUpdateToken);
                 OnUpdateToken = null;
 
-                Callbacks.OnUIUnload();
+                Events.OnUIUnload();
             }
 
             /// <summary> Notifies all subscribers to reinitialize their UIs</summary>
@@ -182,7 +182,7 @@ namespace KiraiMod
             {
                 Unload();
 
-                Callbacks.OnUIReload();
+                Events.OnUIReload();
 
                 OnUpdateToken = MelonLoader.MelonCoroutines.Start(OnUpdate());
             }
