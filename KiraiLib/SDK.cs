@@ -25,6 +25,7 @@ namespace KiraiMod
                 public static Action<Player, VrcEvent> OnRPC = new Action<Player, VrcEvent>((_, __) => { });
                 public static Action<Player> OnPlayerJoined = new Action<Player>(_ => { });
                 public static Action<Player> OnPlayerLeft = new Action<Player>(_ => { });
+                public static Action<Player> OnOwnershipTransferred = new Action<Player>(_ => { });
             }
 
             private static void OnRPCHook(ref Player __0, ref VrcEvent __1) => Events.OnRPC(__0, __1);
@@ -71,6 +72,17 @@ namespace KiraiMod
                     Logger.Trace("Hooked OnPlayerLeft");
                 }
                 catch { Logger.Error("Failed to hook OnPlayerLeft"); }
+
+                try
+                {
+                    NetworkManager
+                        .field_Internal_Static_NetworkManager_0
+                        .field_Internal_VRCEventDelegate_1_Player_2
+                        .field_Private_HashSet_1_UnityAction_1_T_0
+                        .Add(Events.OnOwnershipTransferred);
+                    Logger.Trace("Hooked OnOwnershipTransferred");
+                }
+                catch { Logger.Error("Failed to hook OnOwnershipTransferred"); }
             }
         }
     }
