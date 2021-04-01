@@ -66,12 +66,12 @@ namespace KiraiMod
                 public HalfButton(string label, string tooltip, float x, float y, bool lower, Transform parent, Action OnClick)
                 {
                     this.OnClick = OnClick;
-
+                    
                     GameObject button = UnityEngine.Object.Instantiate(BaseButton.gameObject, parent);
 
                     button.transform.localPosition = new Vector3(
                         button.transform.localPosition.x + (ButtonSize * (x - 1)),
-                        button.transform.localPosition.y + (ButtonSize * y) + (ButtonSize / 2 * (lower ? -1 : 1)),
+                        button.transform.localPosition.y + (ButtonSize * y) + (ButtonSize / 4 * (lower ? -1 : 1)),
                         button.transform.localPosition.z
                     );
 
