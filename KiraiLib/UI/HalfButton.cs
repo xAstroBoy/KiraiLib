@@ -71,7 +71,7 @@ namespace KiraiMod
 
                     button.transform.localPosition = new Vector3(
                         button.transform.localPosition.x + (ButtonSize * (x - 1)),
-                        button.transform.localPosition.y + (ButtonSize * y) + (ButtonSize / 4 * (lower ? -1 : 1)),
+                        button.transform.localPosition.y + (ButtonSize * y) + (ButtonSize / 2 * (lower ? -1 : 1)),
                         button.transform.localPosition.z
                     );
 
