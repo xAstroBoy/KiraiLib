@@ -14,39 +14,25 @@ namespace KiraiMod
         /// <returns> Legendary | Veteran | Trusted | Known | User | New | Visitor | Nuisance | Unknown </returns>
         public static string GetTrustLevel(this APIUser user)
         {
-            var a = new string[]
+            if (user is null) return "Unknown";
+
+            if (user.hasLegendTrustLevel)
             {
-                "Legendary",
-                "Veteran",
-                "Trusted",
-                "Known",
-                "User",
-                "New",
-                "Visitor",
-                "Nuisance"
-            };
-
-            return a[Random.Range(0, a.Length)];
-
-            //if (user is null) return "Unknown";
-
-            //if (user.hasLegendTrustLevel)
-            //{
-            //    if (user.tags.Contains("system_legend"))
-            //        return "Legendary";
-            //    return "Veteran";
-            //}
-            //else if (user.hasVeteranTrustLevel) return "Trusted";
-            //else if (user.hasTrustedTrustLevel) return "Known";
-            //else if (user.hasKnownTrustLevel) return "User";
-            //else if (user.hasBasicTrustLevel) return "New";
-            //else if (user.isUntrusted)
-            //{
-            //    if (user.tags.Contains("system_probable_troll"))
-            //        return "Nuisance";
-            //    return "Visitor";
-            //}
-            //else return "Unknown";
+                if (user.tags.Contains("system_legend"))
+                    return "Legendary";
+                return "Veteran";
+            }
+            else if (user.hasVeteranTrustLevel) return "Trusted";
+            else if (user.hasTrustedTrustLevel) return "Known";
+            else if (user.hasKnownTrustLevel) return "User";
+            else if (user.hasBasicTrustLevel) return "New";
+            else if (user.isUntrusted)
+            {
+                if (user.tags.Contains("system_probable_troll"))
+                    return "Nuisance";
+                return "Visitor";
+            }
+            else return "Unknown";
         }
 
         /// <summary> Returns a color for the player's rank </summary>
