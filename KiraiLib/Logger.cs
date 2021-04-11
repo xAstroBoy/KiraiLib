@@ -36,7 +36,7 @@ namespace KiraiMod
 
             private static IEnumerator LogAndRemove(string text, float duration)
             {
-                if (Unloaded) yield break;
+                if (Unloaded || log is null) yield break;
 
                 lines.Add(text);
                 log.text = string.Join("\n", lines);
