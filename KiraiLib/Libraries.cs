@@ -27,7 +27,7 @@ namespace KiraiMod
                     loading.Add(name);
 
                     if (string.IsNullOrWhiteSpace(registry))
-                        registry = "https://raw.githubusercontent.com/xKiraiChan/KiraiLib/master/Dist/";
+                        registry = "https://raw.githubusercontent.com/xKiraiChan/KiraiLibs/master/Dist/";
 
                     Task<string> hashReq = http.GetStringAsync($"{registry}{name}.hash");
 
