@@ -29,15 +29,16 @@ public class KiraiMod : MelonMod
 ```
 
 # Logger Usage
+
 All logger functions have documentation, place the XML file in the same folder that you reference the library to see them in Visual Studio.
 
-# Callback Usage
+# Event Usage
 
-KiraiLib supports unloading and reloading, due to this you will need to subscribe to some callbacks.
+KiraiLib supports unloading and reloading, due to this you will need to subscribe to some events.
 
 OnUIUnload is optional but you probably want to subscribe to OnUIReload to remake your managed UI elements.
 
-Example: `KiraiLib.Callbacks.OnUIReload += () => { VRChat_OnUIManagerInit(); };`
+Example: `KiraiLib.Events.OnUIReload += () => { VRChat_OnUIManagerInit(); };`
 
 # UI Usage
 
